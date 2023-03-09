@@ -13,12 +13,21 @@ namespace Stos
             stos1.Init(10);
 
             int liczba;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 10;)
             {
-                Console.Write($"Wprowadz {i+1}. liczbe do stosu: ");
-                liczba = Convert.ToInt32(Console.ReadLine());
-                Console.Clear();
-                stos1.push(liczba);
+                try
+                {
+                    Console.Write($"Wprowadz {i + 1}. liczbe do stosu: ");
+                    liczba = Convert.ToInt32(Console.ReadLine());
+                    stos1.push(liczba);
+                    Console.Clear();
+                    i++;
+                }
+                catch (FormatException)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Nalezy podawac tylko liczby calkowite.");
+                }
             }
 
             for (int i = 0; i < 10; i++)
@@ -35,7 +44,6 @@ namespace Stos
                 stos1.push(liczba);
                 stos2.pop();
             }
-
         }
     }
 
